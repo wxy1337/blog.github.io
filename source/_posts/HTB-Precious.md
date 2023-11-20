@@ -1,7 +1,12 @@
 ---
 title: HTB:Precious
 date: 2023-11-19 21:41:37
+categories:
+- Machines
+- Lab
 tags:
+- HTB
+- easy
 ---
 
 # Precious
