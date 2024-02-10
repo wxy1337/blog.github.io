@@ -137,6 +137,43 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2024/02/10/HTB-Skyfall/" >HTB: Skyfall</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2024-02-10  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p><img src="/../images/image-20240210103259351.png" alt="image-20240210103259351"></p>
+<p>nmap结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~/htb/Skyfall]</span><br><span class="line">└─$ nmap -sC -sV --min-rate 10000 10.10.11.254 -oN nmap</span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org ) at 2024-02-06 22:07 EST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 10.10.11.254 (10.10.11.254)</span><br><span class="line">Host is up (0.28s latency).</span><br><span class="line">Not shown: 873 filtered tcp ports (no-response), 125 closed tcp ports (conn-refused)</span><br><span class="line">PORT   STATE SERVICE VERSION</span><br><span class="line">22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.6 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   256 65:70:f7:12:47:07:3a:88:8e:27:e9:cb:44:5d:10:fb (ECDSA)</span><br><span class="line">|_  256 74:48:33:07:b7:88:9d:32:0e:3b:ec:16:aa:b4:c8:fe (ED25519)</span><br><span class="line">80/tcp open  http    nginx 1.18.0 (Ubuntu)</span><br><span class="line">|_http-title: Skyfall - Introducing Sky Storage!</span><br><span class="line">|_http-server-header: nginx/1.18.0 (Ubuntu)</span><br><span class="line">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 26.23 seconds</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20240210110543035.png" alt="image-20240210110543035"></p>
+<p>找到一个demo按钮</p>
+<p>发现跳转到demo.skyfall.htb</p>
+<p>将其加入hosts文件后访问</p>
+<p><img src="/../images/image-20240210110702158.png" alt="image-20240210110702158"></p>
+<p>提示有默认登录guest，进行登录</p>
+<p><img src="/../images/image-20240210110730108.png" alt="image-20240210110730108"></p>
+	
+	</div>
+  <a type="button" href="/2024/02/10/HTB-Skyfall/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2024/02/03/HTB-Pov/" >HTB: Pov</a>
 		</h3>
 		</div>
@@ -158,7 +195,7 @@
 <p>访问页面</p>
 <p><img src="/../images/image-20240203181543568.png" alt="image-20240203181543568"></p>
 <p><img src="/../images/image-20240203181606029.png" alt="image-20240203181606029"></p>
-<p>发现<a href="mailto:&#115;&#x66;&#105;&#x74;&#122;&#x40;&#112;&#111;&#x76;&#x2e;&#x68;&#x74;&#x62;">&#115;&#x66;&#105;&#x74;&#122;&#x40;&#112;&#111;&#x76;&#x2e;&#x68;&#x74;&#x62;</a> 和 dev.pov.htb</p>
+<p>发现<a href="mailto:&#115;&#102;&#105;&#116;&#x7a;&#64;&#112;&#x6f;&#x76;&#46;&#104;&#116;&#x62;">&#115;&#102;&#105;&#116;&#x7a;&#64;&#112;&#x6f;&#x76;&#46;&#104;&#116;&#x62;</a> 和 dev.pov.htb</p>
 <p>将dev.pov.htb加入hosts文件后进行访问</p>
 <p><img src="/../images/image-20240203181803709.png" alt="image-20240203181803709"></p>
 <p><img src="/../images/image-20240203182239958.png" alt="image-20240203182239958"></p>
@@ -464,34 +501,6 @@
 </div>
 
 		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2023/11/16/pictures/" >pictures</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2023-11-16  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h1 id="test-pictures"><a href="#test-pictures" class="headerlink" title="test pictures"></a>test pictures</h1><p><img src="/../images/image-20231117000604909.png" alt="image-20231117000604909"></p>
-
-	
-	</div>
-  <a type="button" href="/2023/11/16/pictures/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -545,9 +554,9 @@
 		
 			<li><a href="/categories/Fortress/">Fortress<span>1</span></a></li>
 		
-			<li><a href="/categories/Machines/Lab/">Lab<span>7</span></a></li>
+			<li><a href="/categories/Machines/Lab/">Lab<span>8</span></a></li>
 		
-			<li><a href="/categories/Machines/">Machines<span>7</span></a></li>
+			<li><a href="/categories/Machines/">Machines<span>8</span></a></li>
 		
 			<li><a href="/categories/Misc/">Misc<span>1</span></a></li>
 		
@@ -570,19 +579,21 @@
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/season4/">season4<span>2</span></a></li>
+			<li><a href="/tags/easy/">easy<span>6</span></a></li>
 		
-			<li><a href="/tags/pictures/">pictures<span>1</span></a></li>
-		
-			<li><a href="/tags/HTB/">HTB<span>9</span></a></li>
+			<li><a href="/tags/HTB/">HTB<span>10</span></a></li>
 		
 			<li><a href="/tags/test1-test2/">test1,test2<span>1</span></a></li>
 		
-			<li><a href="/tags/test3/">test3<span>1</span></a></li>
+			<li><a href="/tags/pictures/">pictures<span>1</span></a></li>
 		
 			<li><a href="/tags/medium/">medium<span>2</span></a></li>
 		
-			<li><a href="/tags/easy/">easy<span>6</span></a></li>
+			<li><a href="/tags/insane/">insane<span>1</span></a></li>
+		
+			<li><a href="/tags/season4/">season4<span>3</span></a></li>
+		
+			<li><a href="/tags/test3/">test3<span>1</span></a></li>
 		
 		 
 		</ul>
@@ -594,6 +605,10 @@
 <div class="widget">
   <h4>Recent Posts</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2024/02/10/HTB-Skyfall/" ><i class="fa fa-file-o"></i>HTB: Skyfall</a>
+      </li>
     
       <li>
         <a href="/2024/02/03/HTB-Pov/" ><i class="fa fa-file-o"></i>HTB: Pov</a>
@@ -609,10 +624,6 @@
     
       <li>
         <a href="/2023/11/26/HTB-M0rsarchive/" ><i class="fa fa-file-o"></i>HTB: M0rsarchive</a>
-      </li>
-    
-      <li>
-        <a href="/2023/11/25/HTB-Zipping/" ><i class="fa fa-file-o"></i>HTB: Zipping</a>
       </li>
     
   </ul>
