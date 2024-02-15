@@ -137,6 +137,43 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2023/11/18/HTB-CozyHosting/" >HTB: CozyHosting</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2023-11-18  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p><img src="/../images/image-20231118195809339.png" alt="image-20231118195809339"></p>
+<p>IP:<code>10.10.11.230</code></p>
+<p>nmap扫描</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~/htb/CozyHosting]</span><br><span class="line">└─$ nmap -p- 10.10.11.230 --min-rate 10000 -oN nmap_ports</span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org ) at 2023-11-18 07:00 EST</span><br><span class="line">Warning: 10.10.11.230 giving up on port because retransmission <span class="built_in">cap</span> hit (10).</span><br><span class="line">Stats: 0:00:29 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan</span><br><span class="line">Connect Scan Timing: About 46.43% <span class="keyword">done</span>; ETC: 07:01 (0:00:32 remaining)</span><br><span class="line">Nmap scan report <span class="keyword">for</span> cozyhosting.htb (10.10.11.230)</span><br><span class="line">Host is up (0.39s latency).</span><br><span class="line">Not shown: 64345 closed tcp ports (conn-refused), 1187 filtered tcp ports (no-response)</span><br><span class="line">PORT     STATE SERVICE</span><br><span class="line">22/tcp   open  ssh</span><br><span class="line">80/tcp   open  http</span><br><span class="line">9001/tcp open  tor-orport</span><br><span class="line"></span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 67.33 seconds</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>80端口http界面</p>
+<p><img src="/../images/image-20231118200354428.png" alt="image-20231118200354428"></p>
+<p>只有login能点进去</p>
+<p><img src="/../images/image-20231118200506277.png" alt="image-20231118200506277"></p>
+<p>弱口令尝试失败</p>
+<p><img src="/../images/image-20231118203151668.png" alt="image-20231118203151668"></p>
+	
+	</div>
+  <a type="button" href="/2023/11/18/HTB-CozyHosting/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2023/11/16/pictures/" >pictures</a>
 		</h3>
 		</div>
@@ -240,9 +277,9 @@
 		
 			<li><a href="/categories/Fortress/">Fortress<span>1</span></a></li>
 		
-			<li><a href="/categories/Machines/Lab/">Lab<span>8</span></a></li>
+			<li><a href="/categories/Machines/Lab/">Lab<span>9</span></a></li>
 		
-			<li><a href="/categories/Machines/">Machines<span>8</span></a></li>
+			<li><a href="/categories/Machines/">Machines<span>9</span></a></li>
 		
 			<li><a href="/categories/Misc/">Misc<span>1</span></a></li>
 		
@@ -265,21 +302,21 @@
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/season4/">season4<span>3</span></a></li>
-		
-			<li><a href="/tags/medium/">medium<span>2</span></a></li>
-		
-			<li><a href="/tags/pictures/">pictures<span>1</span></a></li>
-		
 			<li><a href="/tags/insane/">insane<span>1</span></a></li>
 		
-			<li><a href="/tags/easy/">easy<span>6</span></a></li>
+			<li><a href="/tags/season4/">season4<span>4</span></a></li>
 		
-			<li><a href="/tags/test1-test2/">test1,test2<span>1</span></a></li>
+			<li><a href="/tags/HTB/">HTB<span>11</span></a></li>
 		
 			<li><a href="/tags/test3/">test3<span>1</span></a></li>
 		
-			<li><a href="/tags/HTB/">HTB<span>10</span></a></li>
+			<li><a href="/tags/test1-test2/">test1,test2<span>1</span></a></li>
+		
+			<li><a href="/tags/pictures/">pictures<span>1</span></a></li>
+		
+			<li><a href="/tags/easy/">easy<span>7</span></a></li>
+		
+			<li><a href="/tags/medium/">medium<span>2</span></a></li>
 		
 		 
 		</ul>
@@ -291,6 +328,10 @@
 <div class="widget">
   <h4>Recent Posts</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2024/02/15/HTB-Crafty/" ><i class="fa fa-file-o"></i>HTB: Crafty</a>
+      </li>
     
       <li>
         <a href="/2024/02/10/HTB-Skyfall/" ><i class="fa fa-file-o"></i>HTB: Skyfall</a>
@@ -306,10 +347,6 @@
     
       <li>
         <a href="/2023/11/26/HTB-Fortress-Jet/" ><i class="fa fa-file-o"></i>HTB: Fortress-Jet</a>
-      </li>
-    
-      <li>
-        <a href="/2023/11/26/HTB-M0rsarchive/" ><i class="fa fa-file-o"></i>HTB: M0rsarchive</a>
       </li>
     
   </ul>
