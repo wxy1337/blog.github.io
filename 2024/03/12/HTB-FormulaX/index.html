@@ -1,0 +1,313 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>HTB: FormulaX | Lavande&#39;s Blog</title>
+  <meta name="author" content="Lavande">
+  
+  <meta name="description" content="nmap
+123456789101112131415161718# Nmap 7.92 scan initiated Tue Mar 12 09:00:27 2024 as: nmap -sC -sV -A -T4 -oN nmap 10.10.11.6Nmap scan report for 10.10.11.6 (10.10.11.6)Host is up (0.64s latency).Not shown: 998 closed tcp ports (conn-refused)PORT   STATE SERVICE VERSION22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.6 (Ubuntu Linux; protocol 2.0)| ssh-hostkey: |   256 5f:b2:cd:54:e4:47:d1:0e:9e:81:35:92:3c:d6:a3:cb (ECDSA)|_  256 b9:f0:0d:dc:05:7b:fa:fb:91:e6:d0:b4:59:e6:db:88 (ED25519)80/tcp open  http    nginx 1.18.0 (Ubuntu)|_http-cors: GET POST| http-title: Site doesn&amp;#x27;t have a title (text/html; charset=UTF-8).|_Requested resource was /static/index.html|_http-server-header: nginx/1.18.0 (Ubuntu)Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernelService detection performed. Please report any incorrect results at https://nmap.org/submit/ .# Nmap done at Tue Mar 12 09:02:01 2024 -- 1 IP address (1 host up) scanned in 93.83 seconds
+
+chat.js
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960let value;const res = axios.get(`/user/api/chat`);const socket = io(&amp;#x27;/&amp;#x27;,&amp;#123;withCredentials: true&amp;#125;);//listening for the messagessocket.on(&amp;#x27;message&amp;#x27;, (my_message) =&amp;gt; &amp;#123;  //console.log(&amp;quot;Received From Server: &amp;quot; + my_message)  Show_messages_on_screen_of_Server(my_message)&amp;#125;)const typing_chat = () =&amp;gt; &amp;#123;  value = document.getElementById(&amp;#x27;user_message&amp;#x27;).value  if (value) &amp;#123;    // sending the  messages to the server    socket.emit(&amp;#x27;client_message&amp;#x27;, value)    Show_messages_on_screen_of_Client(value);    // here we will do out socket things..    document.getElementById(&amp;#x27;user_message&amp;#x27;).value = &amp;quot;&amp;quot;  &amp;#125;  else &amp;#123;    alert(&amp;quot;Cannot send Empty Messages&amp;quot;);  &amp;#125;&amp;#125;function htmlEncode(str) &amp;#123;  return String(str).replace(/[^\w. ]/gi, function (c) &amp;#123;    return &amp;#x27;&amp;amp;#&amp;#x27; + c.charCodeAt(0) + &amp;#x27;;&amp;#x27;;  &amp;#125;);&amp;#125;const Show_messages_on_screen_of_Server = (value) =&amp;gt; &amp;#123;  const div = document.createElement(&amp;#x27;div&amp;#x27;);  div.classList.add(&amp;#x27;container&amp;#x27;)  div.innerHTML = `    &amp;lt;h2&amp;gt;&amp;amp;#129302;  &amp;lt;/h2&amp;gt;    &amp;lt;p&amp;gt;$&amp;#123;value&amp;#125;&amp;lt;/p&amp;gt;  `  document.getElementById(&amp;#x27;big_container&amp;#x27;).appendChild(div)&amp;#125;// send the input to the chat forumconst Show_messages_on_screen_of_Client = (value) =&amp;gt; &amp;#123;  value = htmlEncode(value)  const div = document.createElement(&amp;#x27;div&amp;#x27;);  div.classList.add(&amp;#x27;container&amp;#x27;)  div.classList.add(&amp;#x27;darker&amp;#x27;)  div.innerHTML = `    &amp;lt;h2&amp;gt;&amp;amp;#129302;  &amp;lt;/h2&amp;gt;      &amp;lt;p&amp;gt;$&amp;#123;value&amp;#125;&amp;lt;/p&amp;gt;  `  document.getElementById(&amp;#x27;big_container&amp;#x27;).appendChild(div)&amp;#125;
+
+dirsearch
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191┌──(kali㉿kali)-[~/htb/FormulaX]└─$ dirsearch -u http://formulax.htb -t 200 -x 500  _|. _ _  _  _  _ _|_    v0.4.2                                                                 (_||| _) (/_(_|| (_| )                                                                                                                                                                         Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 200 | Wordlist size: 10927Output File: /home/kali/.dirsearch/reports/formulax.htb/_24-03-12_09-16-10.txtError Log: /home/kali/.dirsearch/logs/errors-24-03-12_09-16-10.logTarget: http://formulax.htb/[09:16:12] Starting: [09:16:35] 200 -   46B  - /ADMIN                                            [09:16:35] 200 -   46B  - /Admin/knowledge/dsmgr/users/GroupManager.asp     [09:16:36] 200 -   46B  - /Admin/login/                                     [09:16:36] 200 -   46B  - /Admin                                            [09:16:36] 200 -   46B  - /Admin/knowledge/dsmgr/users/UserManager.asp      [09:16:44] 200 -   46B  - /admin                                            [09:16:45] 200 -   46B  - /admin/adminLogin.aspx                            [09:16:45] 200 -   46B  - /admin/cp[09:16:45] 200 -   46B  - /admin/adminLogin.html                            [09:16:45] 200 -   46B  - /admin/controlpanel.aspx[09:16:45] 200 -   46B  - /admin/adminLogin.php                             [09:16:45] 200 -   46B  - /admin/_logs/error_log                            [09:16:45] 200 -   46B  - /admin/_logs/login.txt                            [09:16:45] 200 -   46B  - /admin/cp.php[09:16:45] 200 -   46B  - /admin/.config                                    [09:16:45] 200 -   46B  - /admin/adminLogin.js[09:16:45] 200 -   46B  - /admin/?/login                                    [09:16:45] 200 -   46B  - /admin/config.php[09:16:45] 200 -   46B  - /admin/_logs/err.log                              [09:16:45] 200 -   46B  - /admin/[09:16:45] 200 -   46B  - /admin/adminLogin.jsp                             [09:16:45] 200 -   46B  - /admin/controlpanel.html                          [09:16:45] 200 -   46B  - /admin/_logs/error.log[09:16:45] 200 -   46B  - /admin/controlpanel.js[09:16:45] 200 -   46B  - /admin/_logs/access-log                           [09:16:45] 200 -   46B  - /admin/_logs/error-log[09:16:45] 200 -   46B  - /admin/cp.js                                      [09:16:45] 200 -   46B  - /admin/default/login.asp                          [09:16:45] 200 -   46B  - /admin/controlpanel.jsp                           [09:16:45] 200 -   46B  - /admin/default[09:16:45] 200 -   46B  - /admin/default.asp[09:16:45] 200 -   46B  - /admin/admin_login.html                           [09:16:45] 200 -   46B  - /admin/_logs/access.log                           [09:16:45] 200 -   46B  - /admin/adminLogin[09:16:45] 200 -   46B  - /admin/admin_login.js[09:16:45] 200 -   46B  - /admin/cp.jsp[09:16:45] 200 -   46B  - /admin/_logs/access_log[09:16:45] 200 -   46B  - /admin/admin_login.jsp[09:16:45] 200 -   46B  - /admin/backups/                                   [09:16:45] 200 -   46B  - /admin/backup/                                    [09:16:45] 200 -   46B  - /admin/controlpanel.php[09:16:45] 200 -   46B  - /admin/cp.aspx[09:16:45] 200 -   46B  - /admin/download.php[09:16:45] 200 -   46B  - /admin/cp.html                                    [09:16:45] 200 -   46B  - /admin/controlpanel[09:16:45] 200 -   46B  - /admin/.htaccess[09:16:45] 200 -   46B  - /admin/default/admin.asp                          [09:16:45] 200 -   46B  - /admin/db/[09:16:45] 200 -   46B  - /admin/dumper/[09:16:45] 200 -   46B  - /admin/error.txt[09:16:45] 200 -   46B  - /admin/login.aspx                                 [09:16:45] 200 -   46B  - /admin/index.jsp                                  [09:16:45] 200 -   46B  - /admin/login.php[09:16:45] 200 -   46B  - /admin/log[09:16:45] 200 -   46B  - /admin/js/tinymce/[09:16:45] 200 -   46B  - /admin/js/tinymce                                 [09:16:45] 200 -   46B  - /admin/index.html[09:16:45] 200 -   46B  - /admin/index.php[09:16:45] 200 -   46B  - /admin/js/tiny_mce[09:16:45] 200 -   46B  - /admin/js/tiny_mce/[09:16:45] 200 -   46B  - /admin/login.jsp                                  [09:16:45] 200 -   46B  - /admin/login.htm[09:16:45] 200 -   46B  - /admin/index.aspx[09:16:45] 200 -   46B  - /admin/login.asp[09:16:45] 200 -   46B  - /admin/login[09:16:45] 200 -   46B  - /admin/index.js[09:16:45] 200 -   46B  - /admin/login.js                                   [09:16:45] 200 -   46B  - /admin/login.do[09:16:45] 200 -   46B  - /admin/login.html[09:16:45] 200 -   46B  - /admin/admin-login                                [09:16:45] 200 -   46B  - /admin/admin.html                                 [09:16:45] 200 -   46B  - /admin/access.log                                 [09:16:45] 200 -   46B  - /admin/admin-login.html                           [09:16:45] 200 -   46B  - /admin/admin.js[09:16:45] 200 -   46B  - /admin/admin.jsp                                  [09:16:45] 200 -   46B  - /admin/account.js                                 [09:16:45] 200 -   46B  - /admin/admin_login.aspx                           [09:16:45] 200 -   46B  - /admin/account[09:16:45] 200 -   46B  - /admin/admin.aspx[09:16:45] 200 -   46B  - /admin/account.html[09:16:45] 200 -   46B  - /admin/admin.php[09:16:45] 200 -   46B  - /admin/admin[09:16:45] 200 -   46B  - /admin/account.jsp[09:16:45] 200 -   46B  - /admin/admin-login.js[09:16:45] 200 -   46B  - /admin/access.txt[09:16:45] 200 -   46B  - /admin/admin-login.aspx                           [09:16:45] 200 -   46B  - /admin/error.log[09:16:45] 200 -   46B  - /admin/account.aspx[09:16:45] 200 -   46B  - /admin/export.php[09:16:45] 200 -   46B  - /admin/admin-login.jsp[09:16:45] 200 -   46B  - /admin/admin_login.php[09:16:45] 200 -   46B  - /admin/login.rb[09:16:45] 200 -   46B  - /admin/account.php[09:16:45] 200 -   46B  - /admin/admin/login[09:16:45] 200 -   46B  - /admin/admin-login.php[09:16:45] 200 -   46B  - /admin/fckeditor/editor/filemanager/browser/default/connectors/php/connector.php                                                                                      [09:16:45] 200 -   46B  - /admin/home[09:16:45] 200 -   46B  - /admin/fckeditor/editor/filemanager/connectors/php/connector.php[09:16:45] 200 -   46B  - /admin/fckeditor/editor/filemanager/connectors/asp/upload.asp[09:16:45] 200 -   46B  - /admin/error_log[09:16:45] 200 -   46B  - /admin/login.py[09:16:46] 200 -   46B  - /admin/fckeditor/editor/filemanager/connectors/php/upload.php[09:16:46] 200 -   46B  - /admin/fckeditor/editor/filemanager/connectors/asp/connector.asp[09:16:46] 200 -   46B  - /admin/fckeditor/editor/filemanager/upload/asp/upload.asp[09:16:46] 200 -   46B  - /admin/fckeditor/editor/filemanager/browser/default/connectors/aspx/connector.aspx                                                                                    [09:16:46] 200 -   46B  - /admin/home.jsp[09:16:46] 200 -   46B  - /admin/home.aspx[09:16:46] 200 -   46B  - /admin/home.php[09:16:46] 200 -   46B  - /admin/admin_login[09:16:46] 200 -   46B  - /admin/FCKeditor[09:16:46] 200 -   46B  - /admin/fckeditor/editor/filemanager/connectors/aspx/upload.aspx[09:16:46] 200 -   46B  - /admin/fckeditor/editor/filemanager/browser/default/connectors/asp/connector.asp                                                                                      [09:16:46] 200 -   46B  - /admin/fckeditor/editor/filemanager/upload/php/upload.php[09:16:46] 200 -   46B  - /admin/files.php[09:16:46] 200 -   46B  - /admin/includes/configure.php~[09:16:46] 200 -   46B  - /admin/home.html[09:16:46] 200 -   46B  - /admin/home.js[09:16:46] 200 -   46B  - /admin/file.php[09:16:46] 200 -   46B  - /admin/index[09:16:46] 200 -   46B  - /admin/logon.jsp[09:16:46] 200 -   46B  - /admin/access_log[09:16:46] 200 -   46B  - /admin/fckeditor/editor/filemanager/connectors/aspx/connector.aspx[09:16:46] 200 -   46B  - /admin/fckeditor/editor/filemanager/upload/aspx/upload.aspx[09:16:46] 200 -   46B  - /admin/logs/access.log[09:16:46] 200 -   46B  - /admin/logs/[09:16:46] 200 -   46B  - /admin/logs/access-log[09:16:46] 200 -   46B  - /admin/logs/access_log[09:16:46] 200 -   46B  - /admin/logs/err.log[09:16:46] 200 -   46B  - /admin/logs/error_log[09:16:46] 200 -   46B  - /admin/manage[09:16:46] 200 -   46B  - /admin/manage/admin.asp[09:16:46] 200 -   46B  - /admin/logs/error.log[09:16:46] 200 -   46B  - /admin/logs/login.txt[09:16:46] 200 -   46B  - /admin/logs/error-log[09:16:46] 200 -   46B  - /admin/mysql/index.php[09:16:46] 200 -   46B  - /admin/mysql2/index.php[09:16:46] 200 -   46B  - /admin/phpMyAdmin/[09:16:46] 200 -   46B  - /admin/phpMyAdmin/index.php[09:16:46] 200 -   46B  - /admin/phpmyadmin/[09:16:46] 200 -   46B  - /admin/phpMyAdmin[09:16:46] 200 -   46B  - /admin/PMA/index.php[09:16:46] 200 -   46B  - /admin/pMA/[09:16:46] 200 -   46B  - /admin/mysql/[09:16:46] 200 -   46B  - /admin/phpmyadmin/index.php[09:16:46] 200 -   46B  - /admin/phpmyadmin2/index.php[09:16:46] 200 -   46B  - /admin/pma/[09:16:46] 200 -   46B  - /admin/manage.asp                                 [09:16:46] 200 -   46B  - /admin/manage/login.asp                           [09:16:46] 200 -   46B  - /admin/private/logs                               [09:16:46] 200 -   46B  - /admin/pma/index.php[09:16:46] 200 -   46B  - /admin/portalcollect.php?f=http://xxx&amp;amp;t=js        [09:16:46] 200 -   46B  - /admin/secure/logon.jsp[09:16:46] 200 -   46B  - /admin/scripts/fckeditor[09:16:46] 200 -   46B  - /admin/web/[09:16:46] 200 -   46B  - /admin/pol_log.txt[09:16:46] 200 -   46B  - /admin/uploads.php[09:16:46] 200 -   46B  - /admin/user_count.txt[09:16:46] 200 -   46B  - /admin/upload.php[09:16:46] 200 -   46B  - /admin/tinymce[09:16:46] 200 -   46B  - /admin/sxd/                                       [09:16:46] 200 -   46B  - /admin/sysadmin/[09:16:46] 200 -   46B  - /admin/tiny_mce[09:16:46] 200 -   46B  - /admin/release[09:16:46] 200 -   46B  - /admin/sqladmin/                                  [09:16:46] 200 -   46B  - /admin/signin                                     [09:16:59] 200 -   46B  - /chat                                             [09:17:02] 200 -   46B  - /contact_us                                       [09:17:09] 200 -   34KB - /favicon.ico                                      [09:17:12] 301 -  173B  - /img  -&amp;gt;  /img/                                   [09:17:18] 200 -   46B  - /logout                                           [09:17:18] 200 -   46B  - /logout/                                          [09:17:27] 301 -  181B  - /scripts  -&amp;gt;  /scripts/                           [09:17:27] 301 -  187B  - /restricted  -&amp;gt;  /restricted/                     [09:17:31] 301 -  179B  - /static  -&amp;gt;  /static/                                                                                                          Task Completed                        
+
+xss
+
+CVE-2022-25912"> 
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="HTB: FormulaX"/>
+  <meta property="og:site_name" content="Lavande&#39;s Blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="Lavande&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/prism.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-70812759-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-70812759-1');
+</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Lavande&#39;s Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> HTB: FormulaX</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p><img src="/../images/image-20240312211850201.png" alt="image-20240312211850201"></p>
+<p>nmap</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># Nmap 7.92 scan initiated Tue Mar 12 09:00:27 2024 as: nmap -sC -sV -A -T4 -oN nmap 10.10.11.6</span><br><span class="line">Nmap scan report for 10.10.11.6 (10.10.11.6)</span><br><span class="line">Host is up (0.64s latency).</span><br><span class="line">Not shown: 998 closed tcp ports (conn-refused)</span><br><span class="line">PORT   STATE SERVICE VERSION</span><br><span class="line">22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.6 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   256 5f:b2:cd:54:e4:47:d1:0e:9e:81:35:92:3c:d6:a3:cb (ECDSA)</span><br><span class="line">|_  256 b9:f0:0d:dc:05:7b:fa:fb:91:e6:d0:b4:59:e6:db:88 (ED25519)</span><br><span class="line">80/tcp open  http    nginx 1.18.0 (Ubuntu)</span><br><span class="line">|_http-cors: GET POST</span><br><span class="line">| http-title: Site doesn&#x27;t have a title (text/html; charset=UTF-8).</span><br><span class="line">|_Requested resource was /static/index.html</span><br><span class="line">|_http-server-header: nginx/1.18.0 (Ubuntu)</span><br><span class="line">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line"># Nmap done at Tue Mar 12 09:02:01 2024 -- 1 IP address (1 host up) scanned in 93.83 seconds</span><br></pre></td></tr></table></figure>
+
+<p>chat.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> value;</span><br><span class="line"><span class="keyword">const</span> res = axios.<span class="title function_">get</span>(<span class="string">`/user/api/chat`</span>);</span><br><span class="line"><span class="keyword">const</span> socket = <span class="title function_">io</span>(<span class="string">&#x27;/&#x27;</span>,&#123;<span class="attr">withCredentials</span>: <span class="literal">true</span>&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//listening for the messages</span></span><br><span class="line">socket.<span class="title function_">on</span>(<span class="string">&#x27;message&#x27;</span>, <span class="function">(<span class="params">my_message</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//console.log(&quot;Received From Server: &quot; + my_message)</span></span><br><span class="line">  <span class="title class_">Show</span>_messages_on_screen_of_Server(my_message)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">typing_chat</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  value = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;user_message&#x27;</span>).<span class="property">value</span></span><br><span class="line">  <span class="keyword">if</span> (value) &#123;</span><br><span class="line">    <span class="comment">// sending the  messages to the server</span></span><br><span class="line">    socket.<span class="title function_">emit</span>(<span class="string">&#x27;client_message&#x27;</span>, value)</span><br><span class="line">    <span class="title class_">Show</span>_messages_on_screen_of_Client(value);</span><br><span class="line">    <span class="comment">// here we will do out socket things..</span></span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;user_message&#x27;</span>).<span class="property">value</span> = <span class="string">&quot;&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;Cannot send Empty Messages&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">htmlEncode</span>(<span class="params">str</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">String</span>(str).<span class="title function_">replace</span>(<span class="regexp">/[^\w. ]/gi</span>, <span class="keyword">function</span> (<span class="params">c</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&amp;#&#x27;</span> + c.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) + <span class="string">&#x27;;&#x27;</span>;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Show_messages_on_screen_of_Server</span> = (<span class="params">value</span>) =&gt; &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> div = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">  div.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&#x27;container&#x27;</span>)</span><br><span class="line">  div.<span class="property">innerHTML</span> = <span class="string">`  </span></span><br><span class="line"><span class="string">  &lt;h2&gt;&amp;#129302;  &lt;/h2&gt;</span></span><br><span class="line"><span class="string">    &lt;p&gt;<span class="subst">$&#123;value&#125;</span>&lt;/p&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;big_container&#x27;</span>).<span class="title function_">appendChild</span>(div)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// send the input to the chat forum</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Show_messages_on_screen_of_Client</span> = (<span class="params">value</span>) =&gt; &#123;</span><br><span class="line">  value = <span class="title function_">htmlEncode</span>(value)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> div = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">  div.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&#x27;container&#x27;</span>)</span><br><span class="line">  div.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&#x27;darker&#x27;</span>)</span><br><span class="line">  div.<span class="property">innerHTML</span> = <span class="string">`  </span></span><br><span class="line"><span class="string">  &lt;h2&gt;&amp;#129302;  &lt;/h2&gt;</span></span><br><span class="line"><span class="string">      &lt;p&gt;<span class="subst">$&#123;value&#125;</span>&lt;/p&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;big_container&#x27;</span>).<span class="title function_">appendChild</span>(div)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>dirsearch</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~/htb/FormulaX]</span><br><span class="line">└─$ dirsearch -u http://formulax.htb -t 200 -x 500</span><br><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.2                                                                </span><br><span class="line"> (_||| _) (/_(_|| (_| )                                                                         </span><br><span class="line">                                                                                                </span><br><span class="line">Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 200 | Wordlist size: 10927</span><br><span class="line"></span><br><span class="line">Output File: /home/kali/.dirsearch/reports/formulax.htb/_24-03-12_09-16-10.txt</span><br><span class="line"></span><br><span class="line">Error Log: /home/kali/.dirsearch/logs/errors-24-03-12_09-16-10.log</span><br><span class="line"></span><br><span class="line">Target: http://formulax.htb/</span><br><span class="line"></span><br><span class="line">[09:16:12] Starting: </span><br><span class="line">[09:16:35] 200 -   46B  - /ADMIN                                            </span><br><span class="line">[09:16:35] 200 -   46B  - /Admin/knowledge/dsmgr/users/GroupManager.asp     </span><br><span class="line">[09:16:36] 200 -   46B  - /Admin/login/                                     </span><br><span class="line">[09:16:36] 200 -   46B  - /Admin                                            </span><br><span class="line">[09:16:36] 200 -   46B  - /Admin/knowledge/dsmgr/users/UserManager.asp      </span><br><span class="line">[09:16:44] 200 -   46B  - /admin                                            </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/adminLogin.aspx                            </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/cp</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/adminLogin.html                            </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/controlpanel.aspx</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/adminLogin.php                             </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/_logs/error_log                            </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/_logs/login.txt                            </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/cp.php</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/.config                                    </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/adminLogin.js</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/?/login                                    </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/config.php</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/_logs/err.log                              </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/adminLogin.jsp                             </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/controlpanel.html                          </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/_logs/error.log</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/controlpanel.js</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/_logs/access-log                           </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/_logs/error-log</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/cp.js                                      </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/default/login.asp                          </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/controlpanel.jsp                           </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/default</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/default.asp</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/admin_login.html                           </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/_logs/access.log                           </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/adminLogin</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/admin_login.js</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/cp.jsp</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/_logs/access_log</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/admin_login.jsp</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/backups/                                   </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/backup/                                    </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/controlpanel.php</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/cp.aspx</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/download.php</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/cp.html                                    </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/controlpanel</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/.htaccess</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/default/admin.asp                          </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/db/</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/dumper/</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/error.txt</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/login.aspx                                 </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/index.jsp                                  </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/login.php</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/log</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/js/tinymce/</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/js/tinymce                                 </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/index.html</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/index.php</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/js/tiny_mce</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/js/tiny_mce/</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/login.jsp                                  </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/login.htm</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/index.aspx</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/login.asp</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/login</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/index.js</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/login.js                                   </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/login.do</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/login.html</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/admin-login                                </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/admin.html                                 </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/access.log                                 </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/admin-login.html                           </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/admin.js</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/admin.jsp                                  </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/account.js                                 </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/admin_login.aspx                           </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/account</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/admin.aspx</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/account.html</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/admin.php</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/admin</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/account.jsp</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/admin-login.js</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/access.txt</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/admin-login.aspx                           </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/error.log</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/account.aspx</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/export.php</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/admin-login.jsp</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/admin_login.php</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/login.rb</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/account.php</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/admin/login</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/admin-login.php</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/fckeditor/editor/filemanager/browser/default/connectors/php/connector.php                                                                                      </span><br><span class="line">[09:16:45] 200 -   46B  - /admin/home</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/fckeditor/editor/filemanager/connectors/php/connector.php</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/fckeditor/editor/filemanager/connectors/asp/upload.asp</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/error_log</span><br><span class="line">[09:16:45] 200 -   46B  - /admin/login.py</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/fckeditor/editor/filemanager/connectors/php/upload.php</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/fckeditor/editor/filemanager/connectors/asp/connector.asp</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/fckeditor/editor/filemanager/upload/asp/upload.asp</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/fckeditor/editor/filemanager/browser/default/connectors/aspx/connector.aspx                                                                                    </span><br><span class="line">[09:16:46] 200 -   46B  - /admin/home.jsp</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/home.aspx</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/home.php</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/admin_login</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/FCKeditor</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/fckeditor/editor/filemanager/connectors/aspx/upload.aspx</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/fckeditor/editor/filemanager/browser/default/connectors/asp/connector.asp                                                                                      </span><br><span class="line">[09:16:46] 200 -   46B  - /admin/fckeditor/editor/filemanager/upload/php/upload.php</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/files.php</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/includes/configure.php~</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/home.html</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/home.js</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/file.php</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/index</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/logon.jsp</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/access_log</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/fckeditor/editor/filemanager/connectors/aspx/connector.aspx</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/fckeditor/editor/filemanager/upload/aspx/upload.aspx</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/logs/access.log</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/logs/</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/logs/access-log</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/logs/access_log</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/logs/err.log</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/logs/error_log</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/manage</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/manage/admin.asp</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/logs/error.log</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/logs/login.txt</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/logs/error-log</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/mysql/index.php</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/mysql2/index.php</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/phpMyAdmin/</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/phpMyAdmin/index.php</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/phpmyadmin/</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/phpMyAdmin</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/PMA/index.php</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/pMA/</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/mysql/</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/phpmyadmin/index.php</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/phpmyadmin2/index.php</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/pma/</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/manage.asp                                 </span><br><span class="line">[09:16:46] 200 -   46B  - /admin/manage/login.asp                           </span><br><span class="line">[09:16:46] 200 -   46B  - /admin/private/logs                               </span><br><span class="line">[09:16:46] 200 -   46B  - /admin/pma/index.php</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/portalcollect.php?f=http://xxx&amp;t=js        </span><br><span class="line">[09:16:46] 200 -   46B  - /admin/secure/logon.jsp</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/scripts/fckeditor</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/web/</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/pol_log.txt</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/uploads.php</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/user_count.txt</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/upload.php</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/tinymce</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/sxd/                                       </span><br><span class="line">[09:16:46] 200 -   46B  - /admin/sysadmin/</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/tiny_mce</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/release</span><br><span class="line">[09:16:46] 200 -   46B  - /admin/sqladmin/                                  </span><br><span class="line">[09:16:46] 200 -   46B  - /admin/signin                                     </span><br><span class="line">[09:16:59] 200 -   46B  - /chat                                             </span><br><span class="line">[09:17:02] 200 -   46B  - /contact_us                                       </span><br><span class="line">[09:17:09] 200 -   34KB - /favicon.ico                                      </span><br><span class="line">[09:17:12] 301 -  173B  - /img  -&gt;  /img/                                   </span><br><span class="line">[09:17:18] 200 -   46B  - /logout                                           </span><br><span class="line">[09:17:18] 200 -   46B  - /logout/                                          </span><br><span class="line">[09:17:27] 301 -  181B  - /scripts  -&gt;  /scripts/                           </span><br><span class="line">[09:17:27] 301 -  187B  - /restricted  -&gt;  /restricted/                     </span><br><span class="line">[09:17:31] 301 -  179B  - /static  -&gt;  /static/                             </span><br><span class="line">                                                                             </span><br><span class="line">Task Completed                        </span><br></pre></td></tr></table></figure>
+
+<p>xss</p>
+<p><img src="/../images/image-20240312213101994.png" alt="image-20240312213101994"></p>
+<p>CVE-2022-25912</p>
+<p><img src="/../images/image-20240312213519495.png" alt="image-20240312213519495"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.users.find()</span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;648874de313b8717284f457c&quot;), &quot;name&quot; : &quot;admin&quot;, &quot;email&quot; : &quot;admin@chatbot.htb&quot;, &quot;password&quot; : &quot;$2b$10$VSrvhM/5YGM0uyCeEYf/TuvJzzTz.jDLVJ2QqtumdDoKGSa.6aIC.&quot;, &quot;terms&quot; : <span class="literal">true</span>, &quot;value&quot; : <span class="literal">true</span>, &quot;authorization_token&quot; : &quot;Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NDg4NzRkZTMxM2I4NzE3Mjg0ZjQ1N2MiLCJpYXQiOjE3MTAyNTA1OTZ9.LMz1XDXbrUUnUBL38SUV0Cjb93uoDqcY-U4M2ejALxs&quot;, &quot;__v&quot; : <span class="number">0</span> &#125;                 </span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;648874de313b8717284f457d&quot;), &quot;name&quot; : &quot;frank_dorky&quot;, &quot;email&quot; : &quot;frank_dorky@chatbot.htb&quot;, &quot;password&quot; : &quot;$2b$10$hrB/by.tb/4ABJbbt1l4/ep/L4CTY6391eSETamjLp7s.elpsB4J6&quot;, &quot;terms&quot; : <span class="literal">true</span>, &quot;value&quot; : <span class="literal">true</span>, &quot;authorization_token&quot; : &quot; &quot;, &quot;__v&quot; : <span class="number">0</span> &#125;                                                                                                                                                                    </span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;65f0532a6802d02f37889feb&quot;), &quot;name&quot; : &quot;test&quot;, &quot;email&quot; : &quot;test@test.com&quot;, &quot;password&quot; : &quot;$2b$10$7rGxazT4x8edhi1vCXssAOIw3MHdxTDsNDcjTZUmEXmnyFFTsSC2m&quot;, &quot;terms&quot; : <span class="literal">true</span>, &quot;value&quot; : <span class="literal">false</span>, &quot;authorization_token&quot; : &quot;Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NWYwNTMyYTY4MDJkMDJmMzc4ODlmZWIiLCJpYXQiOjE3MTAyNDk5MDh9.zID718-Fju2N1XCCFMFUBkfuJaP4wuh_eGEp03e1USI&quot;, &quot;__v&quot; : <span class="number">0</span> &#125;                               </span><br></pre></td></tr></table></figure>
+
+<p>john</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~/htb/FormulaX]</span><br><span class="line">└─$ john -w=/usr/share/wordlists/rockyou.txt frank_dorky </span><br><span class="line">Using default input encoding: UTF-8</span><br><span class="line">Loaded 1 password hash (bcrypt [Blowfish 32/64 X3])</span><br><span class="line">Cost 1 (iteration count) is 1024 for all loaded hashes</span><br><span class="line">Will run 8 OpenMP threads</span><br><span class="line">Press &#x27;q&#x27; or Ctrl-C to abort, almost any other key for status</span><br><span class="line">manchesterunited (?)     </span><br><span class="line">1g 0:00:00:11 DONE (2024-03-12 09:39) 0.08976g/s 252.0p/s 252.0c/s 252.0C/s onlyme..keyboard</span><br><span class="line">Use the &quot;--show&quot; option to display all of the cracked passwords reliably</span><br><span class="line">Session completed. </span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20240312215418121.png" alt="image-20240312215418121"></p>
+<p><img src="/../images/image-20240312215918299.png" alt="image-20240312215918299"></p>
+<p><img src="/../images/image-20240312220426791.png" alt="image-20240312220426791"></p>
+<p><img src="/../images/image-20240312222322432.png" alt="image-20240312222322432"></p>
+<p><img src="/../images/image-20240312222453762.png" alt="image-20240312222453762"></p>
+
+	  <div class="article-footer-copyright">
+
+    本博客采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议(CC BY-NC-SA 4.0) 发布.</a>
+</div>
+
+	</div>
+
+	
+	
+	<div>
+  	<center>
+
+	<div class="pagination">
+
+    
+    
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2024/02/15/HTB-Crafty/" type="button" class="btn btn-default ">Next<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	<!--
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+</section>
+
+-->
+	
+	
+	
+	</div> <!-- col-md-9/col-md-12 -->
+
+
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2024-03-12 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/Machines/">Machines<span>10</span></a></li> <li><a href="/categories/Machines/Lab/">Lab<span>10</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/HTB/">HTB<span>12</span></a></li> <li><a href="/tags/season4/">season4<span>5</span></a></li> <li><a href="/tags/hard/">hard<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+		
+
+	</div>
+	
+		
+
+</div><!-- row -->
+
+<!--
+ -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  
+  &copy; 2024 Lavande's Blog
+  
+      powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.Theme <a href="https://github.com/Ares-X/hexo-theme-freemind.bithack" target="_blank">freemind.bithack</a>  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>
